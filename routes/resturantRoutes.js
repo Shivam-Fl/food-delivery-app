@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const restaurantController = require("./../controllers/resturantController");
+const { protect } = require("./../middlewares/authMiddleware");
 
 // Middleware for admin authentication (pseudo-code)
 const adminAuth = require("./../middlewares/authMiddleware");

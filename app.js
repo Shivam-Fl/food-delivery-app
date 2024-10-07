@@ -13,6 +13,7 @@ const authRoutes = require("./routes/authRoutes");
 const foodItemRoutes = require("./routes/foodItemRoutes");
 const resturantRoutes = require("./routes/resturantRoutes");
 const reviewRoutes = require('./routes/reviewRoutes');
+const orderRoutes = require("./routes/orderRoutes");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api", foodItemRoutes);
 app.use("/api/resturant", resturantRoutes);
 app.use('/api', reviewRoutes);  // Add review routes
+app.use("/api/order", orderRoutes);
 
 // Error handling for unknown routes
 app.use((req, res, next) => {
