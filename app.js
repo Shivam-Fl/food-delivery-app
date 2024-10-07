@@ -1,6 +1,6 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
+const express = require("express");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db");
 
 // Load environment variables
 dotenv.config();
@@ -9,8 +9,9 @@ dotenv.config();
 connectDB();
 
 // Routes
-const authRoutes = require('./routes/authRoutes');
-const foodItemRoutes = require('./routes/foodItemRoutes');
+const authRoutes = require("./routes/authRoutes");
+const foodItemRoutes = require("./routes/foodItemRoutes");
+const resturantRoutes = require("./routes/resturantRoutes");
 
 const app = express();
 
@@ -18,12 +19,13 @@ const app = express();
 app.use(express.json()); // Body parser
 
 // API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api', foodItemRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api", foodItemRoutes);
+app.use("/api/resturant", resturantRoutes);
 
 // Error handling for unknown routes
 app.use((req, res, next) => {
-    res.status(404).json({ message: 'Route not found' });
+  res.status(404).json({ message: "Route not found" });
 });
 
 const PORT = process.env.PORT || 5000;
