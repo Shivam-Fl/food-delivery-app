@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const orderController = require("./../controllers/orderController");
+const protect = require("./../controllers/authController");
 
 // POST /orders: Create a new order (Customer)
 router.post("/", orderController.createOrder);

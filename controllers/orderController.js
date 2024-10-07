@@ -5,7 +5,7 @@ const Order = require("./../models/order");
 exports.createOrder = async (req, res) => {
   try {
     const { restaurant, items, deliveryAddress } = req.body;
-    const customer = req.user._id; // Assuming req.user contains authenticated user details
+    const customer = req.body.customer; // Assuming req.user contains authenticated user details
 
     const totalAmount = items.reduce(
       (acc, item) => acc + item.price * item.quantity,
@@ -45,7 +45,7 @@ exports.getOrderById = async (req, res) => {
 // Get user order history
 exports.getUserOrderHistory = async (req, res) => {
   try {
-    const customer = req.user._id; // Assuming req.user contains authenticated user details
+    const customer = req.params.id; // Assuming req.user contains authenticated user details
     const orders = await Order.find({ customer })
       .sort({ createdAt: -1 })
       .populate("restaurant");
