@@ -12,6 +12,7 @@ connectDB();
 const authRoutes = require("./routes/authRoutes");
 const foodItemRoutes = require("./routes/foodItemRoutes");
 const resturantRoutes = require("./routes/resturantRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(express.json()); // Body parser
 app.use("/api/auth", authRoutes);
 app.use("/api", foodItemRoutes);
 app.use("/api/resturant", resturantRoutes);
+app.use("/api/order", orderRoutes);
 
 // Error handling for unknown routes
 app.use((req, res, next) => {
